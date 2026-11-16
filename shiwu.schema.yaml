@@ -7,9 +7,9 @@ schema:
   author: Minis
   description: |
     15 键 = 5 单笔（一丨丿丶乛）+ 10 部件（十口厂亠亻讠勹扌了禾头）
-    单字 5 码（不足补末码）
-    词组：2字 2+3｜3字 1+2+2｜4字 1+1+1+2｜5字以上 前四字首码+末字首码
-    实测（7,319 字 / 179,944 词）：单字 5 码首选 60.5%，2字词 74.4%，4字词 90.6%
+    单字 6 码（不足补末码）
+    词组：2字 3+3｜3字 2+2+2｜4字 2+1+1+2｜5字 1+1+1+1+2｜6字以上 每字首码
+    实测（7,319 字 / 179,944 词）：单字 6 码首选 77.1%，2字词 88.9%，3字词 94.5%，4字词 96.7%
 switches:
   - name: ascii_mode
     reset: 0
@@ -36,7 +36,7 @@ engine:
     - punct_segmentor
     - fallback_segmentor
   translators:
-    - lua_translator@*shiwu_wild_t
+    - lua_translator@*shiwu6_wild_t
     - punct_translator
     - table_translator
   filters:
@@ -45,7 +45,7 @@ engine:
 speller:
   alphabet: "qwertasdfghjklm*"
   delimiter: " '"
-  max_code_length: 5
+  max_code_length: 6
   auto_select: false
 
 translator:
