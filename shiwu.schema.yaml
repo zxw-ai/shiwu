@@ -36,7 +36,7 @@ engine:
     - punct_segmentor
     - fallback_segmentor
   translators:
-    - lua_translator@*shiwu6_wild_t
+    - lua_translator@*shiwu_wild_t
     - punct_translator
     - table_translator
   filters:
