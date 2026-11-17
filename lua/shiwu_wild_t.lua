@@ -24,7 +24,7 @@ local function init()
   local okapi, ud = pcall(function() return rime_api.get_user_data_dir() end)
   if okapi and ud and ud ~= '' then
     paths[#paths + 1] = ud .. '/lua/shiwu_wild/idx.bin'
-    paths[#paths + 1] = ud .. '/shiwu6_wild/idx.bin'
+    paths[#paths + 1] = ud .. '/lua/shiwu_wild/idx.bin'
   end
   paths[#paths + 1] = 'lua/shiwu_wild/idx.bin'
   paths[#paths + 1] = './lua/shiwu_wild/idx.bin'
