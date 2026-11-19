@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="十五键">
+<meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>十五键笔画 · 练习</title>
+<style>
+:root{
+  --bg:#f2f2f7; --card:#ffffff; --sep:#e5e5ea; --fg:#1c1c1e; --sub:#8e8e93;
+  --key:#ffffff; --keyEdge:#898a8d; --func:#adb5bd; --kb:#d1d1d6;
+  --blue:#1A5CFF; --green:#34c759; --red:#ff3b30; --chip:#f2f2f7;
+  --shadow:0 1px 0 var(--keyEdge);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#000000; --card:#1c1c1e; --sep:#38383a; --fg:#f2f2f7; --sub:#98989d;
+    --key:#646465; --keyEdge:#101012; --func:#434346; --kb:#1c1c1e;
+    --blue:#5B9BFF; --green:#30d158; --red:#ff453a; --chip:#2c2c2e;
+    --shadow:0 1px 0 var(--keyEdge);
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden}
+body{font-family:-apple-system,"PingFang SC","Helvetica Neue",sans-serif;background:var(--bg);color:var(--fg);
+     display:flex;flex-direction:column;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+/* 顶部 */
+header{padding:calc(env(safe-area-inset-top) + 8px) 14px 8px;background:var(--card);border-bottom:1px solid var(--sep);flex:none}
+.hrow{display:flex;align-items:center;gap:10px}
+.logo{width:30px;height:30px;border-radius:8px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex:none}
+.title{font-size:16px;font-weight:600;margin-right:auto;letter-spacing:.5px}
+.gear{width:32px;height:32px;border-radius:9px;background:var(--chip);border:none;color:var(--fg);font-size:17px;display:flex;align-items:center;justify-content:center}
+.tabs{display:flex;gap:5px;margin-top:9px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:6px 13px;border-radius:16px;background:var(--chip);font-size:13px;color:var(--sub);border:none;white-space:nowrap;font-weight:500}
+.tab.on{background:var(--fg);color:var(--bg);font-weight:600}
+.stats{display:flex;gap:16px;padding:8px 16px;background:var(--card);border-bottom:1px solid var(--sep);font-size:11px;color:var(--sub);flex:none;align-items:center}
+.stats b{color:var(--fg);font-size:15px;font-variant-numeric:tabular-nums;font-weight:600;display:block;line-height:1.15}
+.stats .s{margin-left:auto;text-align:right}
+/* 主体 */
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 16px;gap:12px;min-height:0;overflow:hidden}
+.card{background:var(--card);border-radius:18px;padding:18px 22px;box-shadow:0 1px 3px #0000000d;width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.lvtag{font-size:11px;color:var(--sub);letter-spacing:1px;text-transform:uppercase}
+.target{font-size:clamp(56px,17vw,92px);line-height:1.1;font-weight:500;letter-spacing:3px;min-height:1.1em;text-align:center}
+.target.small{font-size:clamp(38px,11vw,60px);letter-spacing:2px}
+.hint{font-size:14px;color:var(--sub);letter-spacing:3px;min-height:24px;display:flex;gap:2px;flex-wrap:wrap;justify-content:center}
+.hint span{display:inline-block;min-width:26px;text-align:center;padding:2px 1px;border-radius:5px;transition:.12s}
+.hint .ok{color:var(--green);font-weight:600}
+.hint .cur{color:var(--fg);border-bottom:2px solid var(--blue);font-weight:600}
+.hint.letters{letter-spacing:5px;font-family:ui-monospace,Menlo,monospace;text-transform:uppercase}
+.hint.letters span{min-width:22px}
+.entry{font-size:24px;letter-spacing:8px;font-family:ui-monospace,Menlo,monospace;min-height:32px;color:var(--fg)}
+.entry .ok{color:var(--green)}
+.entry .bad{color:var(--red);font-weight:700}
+.fb{font-size:13px;min-height:36px;text-align:center;color:var(--green);line-height:1.4;padding:0 4px}
+.fb.bad{color:var(--red)}
+.fb .code{font-family:ui-monospace,Menlo,monospace;font-weight:700}
+.prog{width:100%;height:4px;border-radius:2px;background:var(--chip);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--blue);width:0;transition:width .25s}
+.meta{font-size:11px;color:var(--sub);display:flex;gap:14px;width:100%;justify-content:center}
+/* 键盘 */
+.kb{background:var(--kb);padding:6px 6px calc(6px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:6px;flex:none}
+.krow{display:flex;gap:6px}
+.key{flex:1;height:clamp(46px,13.5vw,58px);border-radius:9px;background:var(--key);box-shadow:var(--shadow);border:none;position:relative;
+     display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--fg);transition:transform .06s,filter .1s}
+.key .main{font-size:20px;line-height:1.05;font-weight:500}
+.key .sub{font-size:9px;color:var(--sub);margin-top:2px;line-height:1}
+.key .badge{position:absolute;right:9%;bottom:12%;font-size:11px;font-weight:700;color:var(--blue);font-family:ui-monospace,Menlo,monospace;line-height:1}
+.key.down{transform:scale(.93);filter:brightness(.85)}
+.key.err{background:var(--red)}
+.key.err .main,.key.err .sub{color:#fff}
+.func{flex:1;height:40px;border-radius:9px;background:var(--func);box-shadow:var(--shadow);border:none;color:var(--fg);font-size:13px;font-weight:500}
+.func.wide{flex:2}
+.func.down{transform:scale(.96);filter:brightness(.85)}
+/* 弹层 */
+.sheet{position:fixed;inset:0;background:#00000066;display:none;align-items:flex-end;z-index:50}
+.sheet.show{display:flex}
+.panel{background:var(--card);border-radius:20px 20px 0 0;width:100%;padding:18px 18px calc(20px + env(safe-area-inset-bottom));max-height:82vh;overflow:auto}
+.ph{display:flex;align-items:center;margin-bottom:14px}
+.ph h3{margin:0;font-size:17px;margin-right:auto}
+.ph button{background:var(--chip);border:none;color:var(--fg);border-radius:8px;padding:5px 12px;font-size:14px}
+.opt{display:flex;align-items:center;justify-content:space-between;padding:12px 2px;border-bottom:1px solid var(--sep);font-size:15px}
+.opt small{color:var(--sub);font-size:11px;display:block;margin-top:2px}
+.seg{display:flex;background:var(--chip);border-radius:9px;padding:2px}
+.seg button{border:none;background:transparent;color:var(--sub);font-size:12px;padding:6px 10px;border-radius:7px}
+.seg button.on{background:var(--card);color:var(--fg);font-weight:600;box-shadow:0 1px 2px #0002}
+/* 查码页 */
+.lookup{flex:1;width:100%;max-width:420px;display:none;flex-direction:column;gap:12px;overflow:auto;padding:2px 0}
+.lookup.show{display:flex}
+main.lookupMode{justify-content:flex-start}
+.searchbox{display:flex;gap:8px;width:100%}
+.searchbox input{flex:1;background:var(--card);border:1px solid var(--sep);border-radius:11px;padding:11px 13px;font-size:17px;color:var(--fg);outline:none;min-width:0}
+.result{background:var(--card);border-radius:16px;padding:18px;text-align:center;min-height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.result .zi{font-size:60px;line-height:1}
+.result .code{font-family:ui-monospace,Menlo,monospace;font-size:26px;letter-spacing:6px;color:var(--blue);font-weight:700}
+.result .parts{font-size:13px;color:var(--sub);letter-spacing:2px}
+.result .none{font-size:14px;color:var(--sub);line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.chips button{background:var(--card);border:1px solid var(--sep);border-radius:9px;width:40px;height:40px;font-size:20px;color:var(--fg)}
+.toast{position:fixed;top:calc(env(safe-area-inset-top) + 60px);left:50%;transform:translateX(-50%) translateY(-16px);background:var(--fg);color:var(--bg);
+       padding:9px 18px;border-radius:20px;font-size:13px;font-weight:600;opacity:0;transition:.25s;pointer-events:none;z-index:80;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<header>
+  <div class="hrow">
+    <div class="logo">键</div>
+    <div class="title">十五键笔画 · 练习</div>
+    <button class="gear" id="btnSet" aria-label="设置">⚙︎</button>
+  </div>
+  <div class="tabs" id="tabs"></div>
+</header>
+<div class="stats">
+  <div><b id="sScore">0</b>得分</div>
+  <div><b id="sAcc">—</b>正确率</div>
+  <div><b id="sSpd">—</b>字/分</div>
+  <div class="s"><b id="sStreak">0</b>连击</div>
+</div>
+
+<main id="main">
+  <!-- 练习 -->
+  <div class="card" id="practiceCard">
+    <div class="lvtag" id="lvTag">常用字 100</div>
+    <div class="target" id="target">—</div>
+    <div class="hint" id="hint"></div>
+    <div class="entry" id="entry"></div>
+    <div class="fb" id="fb"></div>
+    <div class="prog"><i id="prog"></i></div>
+    <div class="meta"><span id="mPos">0 / 0</span><span id="mBest">最佳 0</span></div>
+  </div>
+  <!-- 查码 -->
+  <div class="lookup" id="lookup">
+    <div class="searchbox">
+      <input id="qInput" type="text" placeholder="输入汉字 / 词语查编码" maxlength="6" autocomplete="off" autocorrect="off" spellcheck="false">
+      <button class="func" style="flex:none;width:64px" id="qClear">清空</button>
+    </div>
+    <div class="result" id="qResult"><div class="none">输入或点选下方常用字<br>查看 6 位笔画编码与部件拆解（全字表 17,204 字 + 2 万词条）</div></div>
+    <div class="chips" id="qChips"></div>
+  </div>
+</main>
+
+<div class="kb" id="kb"></div>
+
+<div class="sheet" id="sheet">
+  <div class="panel">
+    <div class="ph"><h3>练习设置</h3><button id="btnClose">完成</button></div>
+    <div class="opt"><div>提示方式<small>默认显示部件名；默写模式不给提示</small></div>
+      <div class="seg" id="segHint">
+        <button data-h="part" class="on">部件</button><button data-h="letter">字母</button><button data-h="none">默写</button>
+      </div></div>
+    <div class="opt"><div>音效 / 振动<small>按键与错码反馈</small></div>
+      <div class="seg" id="segHaptic"><button data-v="1" class="on">开</button><button data-v="0">关</button></div></div>
+    <div class="opt"><div>错码处理<small>立即显示正确编码并进入下一题</small></div>
+      <div class="seg" id="segStrict"><button data-v="1" class="on">严格</button><button data-v="0">宽松</button></div></div>
+    <div class="opt"><div>重置本关统计<small>不清空最佳连击记录</small></div><button class="func" style="flex:none;width:80px" id="btnReset">重置</button></div>
+    <div class="opt" style="border:none"><div>题库<small id="dbInfo">—</small></div></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
