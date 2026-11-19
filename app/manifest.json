@@ -1,0 +1,16 @@
+{
+  "name": "十五键笔画练习",
+  "short_name": "十五键",
+  "description": "十五键笔画输入法打字练习 · 单字/词组/查码",
+  "start_url": "index.html",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f2f2f7",
+  "theme_color": "#1A5CFF",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "icon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
