@@ -5,7 +5,7 @@
   <key>PayloadType</key><string>Configuration</string>
   <key>PayloadVersion</key><integer>1</integer>
   <key>PayloadIdentifier</key><string>com.bg5cgq.shiwu.webclip.public</string>
-  <key>PayloadUUID</key><string>688E021B-F345-4D21-94D1-EFD484D53106</string>
+  <key>PayloadUUID</key><string>5CE02346-D6A0-4D00-A6AE-E31502DED99E</string>
   <key>PayloadDisplayName</key><string>十五键笔画练习</string>
   <key>PayloadDescription</key><string>在 iPhone 主屏添加「十五键」图标，全屏打开笔画打字练习。图标可随时删除。</string>
   <key>PayloadOrganization</key><string>BG5CGQ</string>
@@ -14,11 +14,11 @@
     <dict>
       <key>PayloadType</key><string>com.apple.webClip.managed</string>
       <key>PayloadIdentifier</key><string>com.bg5cgq.shiwu.webclip.public.item</string>
-      <key>PayloadUUID</key><string>019273DE-C24A-402F-B0BD-AB1047AD4C5B</string>
+      <key>PayloadUUID</key><string>B8297BC0-3D0E-4A9E-A4B0-5762DCB5EC24</string>
       <key>PayloadVersion</key><integer>1</integer>
       <key>PayloadDisplayName</key><string>十五键</string>
       <key>Label</key><string>十五键</string>
-      <key>URL</key><string>https://zxw-ai.github.io/shiwu/app.html</string>
+      <key>URL</key><string>https://zxw-ai.github.io/shiwu/app/index.html</string>
       <key>Icon</key><data>
 iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAWaElEQVR4nO2deZRcVZ3HP/ctVV3V
 S3VnI2YjURMCPcFxgIAIIw4gMwSNC854MipxAGcgqKCS0ZEtikZxEAWCcwQcUDKjHBAIRgkQQFkM
