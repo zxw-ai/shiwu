@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>安装「十五键」到桌面</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,"PingFang SC",sans-serif;background:#f2f2f7;color:#1c1c1e;padding:24px 20px calc(30px + env(safe-area-inset-bottom))}
+@media (prefers-color-scheme:dark){body{background:#000;color:#f2f2f7}.card,.warn{background:#1c1c1e!important}a.b2{background:#2c2c2e!important;color:#f2f2f7!important}.step+.step{border-color:#38383a!important}}
+.hero{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.hero img{width:76px;height:76px;border-radius:17px;box-shadow:0 4px 14px #0002}
+.hero b{font-size:17px;display:block}.hero span{font-size:12px;color:#8e8e93}
+h1{font-size:22px;margin:6px 0 4px}.sub{font-size:13px;color:#8e8e93;margin-bottom:20px}
+.card,.warn{background:#fff;border-radius:16px;padding:14px 16px;margin-bottom:14px}
+.step{display:flex;gap:12px;align-items:flex-start;padding:10px 0}.step+.step{border-top:1px solid #e5e5ea}
+.n{width:24px;height:24px;border-radius:50%;background:#1A5CFF;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.step p{margin:2px 0 0;font-size:14px;line-height:1.55}.step small{color:#8e8e93;display:block;margin-top:3px;font-size:12px;line-height:1.5}
+a.b1,a.b2{display:block;text-align:center;text-decoration:none;padding:14px;border-radius:13px;font-size:16px;font-weight:600;margin:6px 0 12px}
+a.b1{background:#1A5CFF;color:#fff}a.b2{background:#e5e5ea;color:#1c1c1e;font-size:14px;font-weight:500}
+.warn{font-size:12px;color:#8e8e93;line-height:1.65}
+code{font-family:ui-monospace,Menlo,monospace;background:#f2f2f7;padding:1px 5px;border-radius:4px;font-size:11px}
+</style>
+</head>
+<body>
+<div class="hero"><img src="https://zxw-ai.github.io/shiwu/icon-180.png" alt=""><div><b>十五键</b><span>笔画打字练习 · 全屏离线</span></div></div>
+<h1>装到 iPhone 桌面</h1>
+<div class="sub">两种方式，任选一种</div>
+
+<div class="card">
+  <div class="step"><div class="n">A</div><p><b>系统描述文件（带图标，一步装好）</b>
+    <small>点蓝色按钮 → 允许下载 → 打开「设置 → 通用 → VPN 与设备管理」→ 点「十五键笔画练习」→ 安装 → 桌面出现蓝色图标，点开即全屏练习。</small></p></div>
+</div>
+<a class="b1" href="shiwu.mobileconfig">① 下载桌面图标配置</a>
+
+<div class="card">
+  <div class="step"><div class="n">B</div><p><b>Safari 手动添加（不用装配置）</b>
+    <small>点灰色按钮打开练习 → Safari 底部分享按钮 → 添加到主屏幕 → 命名「十五键」→ 添加。效果一样，图标由系统生成。</small></p></div>
+</div>
+<a class="b2" href="app.html">② 直接打开练习</a>
+
+<div class="warn">
+  <b>永久可用</b>：练习页托管在 GitHub Pages（HTTPS），装好后不依赖 Minis、不依赖本地服务，关掉 App 也能打开；题库已内嵌，断网照常练。<br>
+  图标随时可长按删除，不改动手机任何设置。
+</div>
+</body>
+</html>
